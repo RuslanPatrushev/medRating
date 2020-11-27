@@ -1,0 +1,83 @@
+body {
+    margin: 0;
+}
+
+.header {
+    display: flex;
+    justify-content: space-around;
+    font-size: 20px;
+    padding: 20px 0;
+}
+
+.container {
+    padding: 0 20px;
+}
+
+.user-album-list {
+    padding: 0 0 0 15px;
+}
+
+.album-img-list {
+    padding: 0 0 0 15px;
+}
+
+.album-img {
+    display: flex;
+    align-items: flex-start;
+    padding: 5px 0;
+}
+
+.album-img-list_open .album-title img {
+    transform: rotate(90deg);
+}
+
+.user-album-list_open .user-name img {
+    transform: rotate(90deg);
+}
+
+.favorite-selector-img {
+    padding: 0 5px 0 0;
+}
+
+
+#imgModal {
+    width: 700px;
+    height: 700px;
+    margin: 0 auto;
+    padding: 18px 9px;
+    border-radius: 4px;
+    background: #fafafa;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    display: none;
+    opacity: 0;
+    z-index: 38;
+    text-align: center;
+}
+
+#imgModal #imgModal__close {
+    width: 21px;
+    height: 21px;
+    position: absolute;
+    top: 1px;
+    right: 11px;
+    cursor: pointer;
+    display: block;
+    font-size: 29px;
+}
+
+#myOverlay {
+    z-index: 37;
+    position: fixed;
+    background-color: rgba(0, 0, 0, .7);
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    cursor: pointer;
+    display: none;
+}
