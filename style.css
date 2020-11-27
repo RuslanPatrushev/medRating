@@ -13,36 +13,36 @@ body {
     padding: 0 20px;
 }
 
-.user-album-list {
+.user__album__list {
     padding: 0 0 0 15px;
 }
 
-.album-img-list {
+.album__img__list {
     padding: 0 0 0 15px;
 }
 
-.album-img {
+.album__img {
     display: flex;
     align-items: flex-start;
     padding: 5px 0;
 }
 
-.album-img-list_open .album-title img {
+.album__img__list_open .album__title img {
     transform: rotate(90deg);
 }
 
-.user-album-list_open .user-name img {
+.user__album__list_open .user__name img {
     transform: rotate(90deg);
 }
 
-.favorite-selector-img {
+.favorite__selector__img {
     padding: 0 5px 0 0;
 }
 
 
-#imgModal {
-    width: 700px;
-    height: 700px;
+.img__modal {
+    width: 650px;
+    height: 600px;
     margin: 0 auto;
     padding: 18px 9px;
     border-radius: 4px;
@@ -59,7 +59,7 @@ body {
     text-align: center;
 }
 
-#imgModal #imgModal__close {
+.img__modal .img__modal__close {
     width: 21px;
     height: 21px;
     position: absolute;
@@ -70,7 +70,7 @@ body {
     font-size: 29px;
 }
 
-#myOverlay {
+.my__overlay {
     z-index: 37;
     position: fixed;
     background-color: rgba(0, 0, 0, .7);

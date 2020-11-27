@@ -25,11 +25,11 @@ function createContainerUserList() {
     jQuery.each(users, function (i, user) {
         containerUserList +=
             `<div id=user${user.id}>
-                <div class="user-name" onclick="openCloseAlbumList(${user.id})">
-                    <img class='open-close-img' src='img/next.svg'/>
+                <div class="user__name" onclick="openCloseAlbumList(${user.id})">
+                    <img class='open__close__img' src='img/next.svg'/>
                     ${user.name}
                 </div>
-                <div class='user-album-list'></div>
+                <div class='user__album__list'></div>
             </div>`;
     });
     $('#users').html(containerUserList);
@@ -40,15 +40,15 @@ function createContainerAlbumList(albumList, userId) {
     jQuery.each(albumList, function (i, album) {
         containerAlbumList +=
             `<div id=album${album.id}> 
-            <div class='album-title' onclick='openCloseImgList(${JSON.stringify(album)})'>
-                <img class='open-close-img' src='img/next.svg'/>
+            <div class='album__title' onclick='openCloseImgList(${JSON.stringify(album)})'>
+                <img class='open__close__img' src='img/next.svg'/>
                 ${album.title} 
             </div>
-            <div class=album-img-list></div>
+            <div class=album__img__list></div>
         </div>`;
 
     });
-    $(`#user${userId} .user-album-list`).html(containerAlbumList);
+    $(`#user${userId} .user__album__list`).html(containerAlbumList);
 }
 
 function createContainerImgList(imgList, containerPlace) {
@@ -61,9 +61,9 @@ function createContainerImgList(imgList, containerPlace) {
             src = "img/notFavorite.svg"
         }
         containerImgList +=
-            `<div id=img${img.id} class="album-img">
-            <img class="favorite-selector-img" onclick='addRemoveFavorite( ${JSON.stringify(img)} )' src="${src}"/>
-            <img class='user-img' onclick="openModal('${img.url}')" title='${img.title}' src='${img.thumbnailUrl}'>  
+            `<div id=img${img.id} class="album__img">
+            <img class="favorite__selector__img" onclick='addRemoveFavorite( ${JSON.stringify(img)} )' src="${src}"/>
+            <img class='user__img' onclick="openModal('${img.url}')" title='${img.title}' src='${img.thumbnailUrl}'>  
         </div>`;
     });
     $(containerPlace).html(containerImgList);
@@ -72,10 +72,10 @@ function createContainerImgList(imgList, containerPlace) {
 function addRemoveFavorite(img) {
     if (!isFavorite(img)) {
         favoriteImgList.push(img);
-        $(`#img${img.id} .favorite-selector-img`).attr('src', "img/favorite.svg");
+        $(`#img${img.id} .favorite__selector__img`).attr('src', "img/favorite.svg");
     } else {
         favoriteImgList = favoriteImgList.filter(item => item.id != img.id);
-        $(`#img${img.id} .favorite-selector-img`).attr('src', "img/notFavorite.svg");
+        $(`#img${img.id} .favorite__selector__img`).attr('src', "img/notFavorite.svg");
         if (isOpenFavoritesPage) {
             $(`#img${img.id} `).remove();
         }
@@ -92,11 +92,11 @@ function openCloseAlbumList(userId) {
             users[userIndex].albums = request(requestBody);
         }
         createContainerAlbumList(users[userIndex].albums, userId);
-        $(`#user${userId}`).addClass('user-album-list_open');
+        $(`#user${userId}`).addClass('user__album__list_open');
     } else {
         openUserAlbumList = openUserAlbumList.filter(id => id != userId);
-        $(`#user${userId} .user-album-list`).empty();
-        $(`#user${userId}`).removeClass('user-album-list_open');
+        $(`#user${userId} .user__album__list`).empty();
+        $(`#user${userId}`).removeClass('user__album__list_open');
     }
 }
 
@@ -109,12 +109,12 @@ function openCloseImgList(album) {
             let requestBody = `photos?albumId=${album.id}`;
             users[userIndex].albums[albumIndex].imgs = request(requestBody);
         }
-        createContainerImgList(users[userIndex].albums[albumIndex].imgs, `#album${album.id} .album-img-list`);
-        $(`#album${album.id}`).addClass('album-img-list_open');
+        createContainerImgList(users[userIndex].albums[albumIndex].imgs, `#album${album.id} .album__img__list`);
+        $(`#album${album.id}`).addClass('album__img__list_open');
     } else {
         openImgList = openImgList.filter(id => id != album.id);
-        $(`#album${album.id} .album-img-list`).empty();
-        $(`#album${album.id}`).removeClass('album-img-list_open');
+        $(`#album${album.id} .album__img__list`).empty();
+        $(`#album${album.id}`).removeClass('album__img__list_open');
     }
 }
 
